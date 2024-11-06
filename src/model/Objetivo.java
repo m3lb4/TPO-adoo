@@ -6,7 +6,8 @@ public abstract class Objetivo {
     protected Date fechaDeInicio;
     protected Rutina rutina;
 
-    public abstract boolean chequearObj();
+    public abstract boolean chequearObj(Socio socio);
+    public abstract boolean cumpleCondiciones();
     public static void generarRutina(){}
 
 }

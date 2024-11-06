@@ -7,4 +7,5 @@ public class MantenerLaFigura  extends Objetivo{
     public boolean chequearObj() {
         return false;
     }
+    public boolean cumpleCondiciones(){}
 }

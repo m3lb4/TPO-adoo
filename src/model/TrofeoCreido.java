@@ -5,4 +5,5 @@ public class TrofeoCreido extends Trofeo{
     public void verificarSiOtorgar() {
 
     }
+    public void notificar(){}
 }

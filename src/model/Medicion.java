@@ -6,7 +6,7 @@ public class Medicion {
     private double masaMuscular;
     private IAdapterMetricas adapterMetricas;
 
-    public void pesar(){}
-    public void medirGrasaCorporal(){}
-    public void medirMasaMuscular(){}
+    public void pesar(Socio socio){}
+    public void medirGrasaCorporal(Socio socio){}
+    public void medirMasaMuscular(Socio socio){}
 }

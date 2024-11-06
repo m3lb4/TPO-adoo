@@ -7,6 +7,7 @@ public class TonificarCuerpo extends Objetivo{
     public boolean chequearObj() {
         return false;
     }
+    public boolean cumpleCondiciones(){}
     public double calcularMasaIdeal(double peso, int altura){
         return 0;
     }
