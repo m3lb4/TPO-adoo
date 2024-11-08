@@ -25,8 +25,9 @@ public class Ejercicio {
     public void iniciarEjercicio(){
 
     }
-    public void finalizarEjercicio(){
-
+    public void finalizarEjercicio(Entrenamiento entrenamiento,  int seriesRealizadas, int repeticionesRealizadas, double pesoAsignado){
+        Date fecha=new Date();
+        RegistroEjercicio registro=new RegistroEjercicio(this, entrenamiento, seriesRealizadas, repeticionesRealizadas, pesoAsignado, fecha);
     }
 
     public Musculo getMusculo() {

@@ -9,15 +9,15 @@ public class Entrenamiento {
     public Entrenamiento() {
     }
 
-    public Entrenamiento(List<Ejercicio> ejercicios) {
-        this.ejercicios = ejercicios;
+    public Entrenamiento() {
+        this.ejercicios = new ArrayList<>();
     }
 
     public void iniciarEntrenamiento(){
-
+        this.entrenamientoFinalizado=false;
     }
     public void finalizarEntrenamiento(){
-
+        this.entrenamientoFinalizado=true;
     }
 
     public List<Ejercicio> getEjercicios() {
@@ -31,7 +31,7 @@ public class Entrenamiento {
     public boolean isEntrenamientoFinalizado() {
         return entrenamientoFinalizado;
     }
-
+    //no se si es necesario el setter de entrenamientoFinalizado
     public void setEntrenamientoFinalizado(boolean entrenamientoFinalizado) {
         this.entrenamientoFinalizado = entrenamientoFinalizado;
     }

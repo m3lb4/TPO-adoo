@@ -9,4 +9,16 @@ public class Medicion {
     public void pesar(Socio socio){}
     public void medirGrasaCorporal(Socio socio){}
     public void medirMasaMuscular(Socio socio){}
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public double getGrasaCorporal() {
+        return grasaCorporal;
+    }
+
+    public double getMasaMuscular() {
+        return masaMuscular;
+    }
 }

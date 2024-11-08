@@ -119,4 +119,16 @@ public class Socio {
     public void setAdapterAuth(IAdapterAuth adapterAuth) {
         this.adapterAuth = adapterAuth;
     }
+
+    public double getGrasaCorporal(){
+        return this.medicion.getGrasaCorporal();
+    }
+
+    public double getMasaMuscular(){
+        return this.medicion.getMasaMuscular
+    }
+
+    public double getPeso(){
+        return this.medicion.getPeso();
+    }
 }
