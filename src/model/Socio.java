@@ -33,9 +33,6 @@ public class Socio {
         this.adapterAuth= IAdapterAuth;
     }
 
-    public void loggear(SocioLoginDTO datos){}
-    public void registrar(SocioRegisterDTO datos){}
-
     public void cambiarObjetivo(Objetivo objetivo){
         this.objetivo=objetivo;
     }
@@ -131,4 +128,8 @@ public class Socio {
     public double getPeso(){
         return this.medicion.getPeso();
     }
+
+    public double pesarse(){ this.medicion.pesar(this)};
+    public double medirGrasaCorporal(){this.medicion.medirGrasaCorporal(this)};
+    public double medirMasaMuscular(){this.medicion.medirMasaMuscular(this)};
 }

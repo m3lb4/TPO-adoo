@@ -1,5 +1,5 @@
 static public class DB {
-    static public socios = [];
-    static public ejercicios = [];
-    static public ejerciciosCompletados = [];
+    static public List<Socio> socios = [];
+    static public List<Ejercicio> ejercicios = [];
+    static public List<RegistroEjercicio> ejerciciosCompletados = [];
 }
