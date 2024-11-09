@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.baseDeDatos.DB;
 import org.example.dto.SocioLoginDTO;
 import org.example.dto.SocioRegisterDTO;
 import org.example.model.IAdapterAuth;
@@ -7,6 +8,8 @@ import org.example.model.Objetivo;
 import org.example.model.Socio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class SocioController {
@@ -37,6 +40,8 @@ public class SocioController {
                 socio.pesarse();
                 socio.medirGrasaCorporal();
                 socio.medirMasaMuscular();
+                List<Object> medicion = Arrays.asList(socio.getMedicion(), socio.getNombreUsuario(), new Date());
+                DB.historialMediciones.add(medicion);
             }
         }
     }

@@ -3,6 +3,7 @@ package org.example.model;
 import org.example.dto.SocioLoginDTO;
 import org.example.dto.SocioRegisterDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Socio {
@@ -14,7 +15,6 @@ public class Socio {
     private int altura;
     private Objetivo objetivo;
     private List<Trofeo> trofeos;
-    private List<RegistroEjercicio> historialEjercicios;
     private IAdapterAuth adapterAuth;
 
     public Socio() {
@@ -26,11 +26,10 @@ public class Socio {
         this.edad = edad;
         this.sexo = sexo;
         this.altura = altura;
-        this.objetivo=null;
-        this.medicion=null;
-        this.trofeos=new ArrayList<>();
-        this.historialEjercicios=new ArrayList<>();
-        this.adapterAuth= IAdapterAuth;
+        this.objetivo = null;
+        this.medicion = new Medicion();
+        this.trofeos = new ArrayList<Trofeo>();
+        this.adapterAuth = new Auth();
     }
 
     public void cambiarObjetivo(Objetivo objetivo){
@@ -122,14 +121,21 @@ public class Socio {
     }
 
     public double getMasaMuscular(){
-        return this.medicion.getMasaMuscular
+        return this.medicion.getMasaMuscular();
     }
 
     public double getPeso(){
         return this.medicion.getPeso();
     }
 
-    public double pesarse(){ this.medicion.pesar(this)};
-    public double medirGrasaCorporal(){this.medicion.medirGrasaCorporal(this)};
-    public double medirMasaMuscular(){this.medicion.medirMasaMuscular(this)};
+    public void pesarse(){ this.medicion.pesar(this);}
+    public void medirGrasaCorporal(){this.medicion.medirGrasaCorporal(this);}
+
+    public void medirMasaMuscular(){
+        this.medicion.medirMasaMuscular(this);
+    }
+
+    public  boolean chequearObj(){
+        this.objetivo.chequearObj(this);
+    }
 }

@@ -17,6 +17,10 @@ public abstract class Observable {
         }
     }
 
-    public void notificar(){}
+    public void notificarObservacion(Socio socio){
+        for (Trofeo observador: observadores){
+            observador.verificarSiOtorgar(socio);
+        }
+    }
 
 }

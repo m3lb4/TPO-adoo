@@ -5,20 +5,20 @@ import java.util.Date;
 public class RegistroEjercicio {
     private Ejercicio ejercicio;
     private Entrenamiento entrenamiento;
+    private Socio socio;
     private int seriesRealizadas;
     private int repeticionesRealizadas;
     private double pesoAsignado;
     private Date fecha;
 
-    public RegistroEjercicio() {}
-
-    public RegistroEjercicio(Ejercicio ejercicio, Entrenamiento entrenamiento, int seriesRealizadas, int repeticionesRealizadas, double pesoAsignado, Date fecha) {
+    public RegistroEjercicio(Ejercicio ejercicio, Entrenamiento entrenamiento, Socio socio, int seriesRealizadas, int repeticionesRealizadas, double pesoAsignado, Date fecha) {
         this.ejercicio = ejercicio;
         this.entrenamiento = entrenamiento;
         this.seriesRealizadas = seriesRealizadas;
         this.repeticionesRealizadas = repeticionesRealizadas;
         this.pesoAsignado = pesoAsignado;
         this.fecha = fecha;
+        this.socio = socio;
 
         DB.ejerciciosCompletados.add(this);
     }

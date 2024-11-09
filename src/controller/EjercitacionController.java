@@ -1,9 +1,13 @@
 package org.example.controller;
 
+import org.example.baseDeDatos.DB;
 import org.example.dto.EjercicioDTO;
 import org.example.model.Ejercicio;
+import org.example.model.Entrenamiento;
 import org.example.model.RegistroEjercicio;
-import org.example.db.DB;
+import org.example.model.Socio;
+
+import java.util.Date;
 
 public class EjercitacionController {
 
@@ -24,21 +28,13 @@ public class EjercitacionController {
     public void finalizarEntrenamiento(){}
 
     public void agregarEjercicio(EjercicioDTO ejercicio){
-        Ejercicio _ejercicio = new Ejercicio(
-                ejercicio.musculo,
-                ejercicio.series,
-                ejercicio.repeticiones,
-                ejercicio.pesoAsignado,
-                ejercicio.nivelAerobico,
-                ejercicio.exigenciaMuscular,
-                ejercicio.urlVideo
-                );
+        Ejercicio _ejercicio = ejercicio.toModel();
 
         DB.ejercicios.add(_ejercicio);
     }
 
-    public void registrarEjercicio(Ejercicio ejercicio){
-        new RegistroEjercicio(ejercicio);
+    public void registrarEjercicio(Ejercicio ejercicio, Entrenamiento entrenamiento,  Socio socio, int seriesRealizadas, int repeticionesRealizadas, double pesoAsignado){
+        new RegistroEjercicio(ejercicio,entrenamiento, socio, seriesRealizadas,repeticionesRealizadas, pesoAsignado, new Date());
     }
 
 

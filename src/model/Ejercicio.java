@@ -9,9 +9,6 @@ public class Ejercicio {
     private ExigenciaMuscular exigenciaMuscular;
     private String URLvideo;
 
-    public Ejercicio() {
-    }
-
     public Ejercicio(Musculo musculo, int series, int repeticiones, double pesoAsignado, int nivelAerobico, ExigenciaMuscular exigenciaMuscular, String URLvideo) {
         this.musculo = musculo;
         this.series = series;
