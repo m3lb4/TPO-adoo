@@ -1,12 +1,13 @@
 package org.example.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.example.dto.EjercicioDTO;
+import org.example.model.Ejercicio;
+import org.example.model.RegistroEjercicio;
+import org.example.db.DB;
 
 public class EjercitacionController {
 
     private static EjercitacionController instance = null;
-
 
     private EjercitacionController(){}
 
@@ -37,7 +38,7 @@ public class EjercitacionController {
     }
 
     public void registrarEjercicio(Ejercicio ejercicio){
-        RegistroEjercicio.RegistrarEjercicio(ejercicio);
+        new RegistroEjercicio(ejercicio);
     }
 
 

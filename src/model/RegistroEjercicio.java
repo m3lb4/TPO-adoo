@@ -12,16 +12,15 @@ public class RegistroEjercicio {
 
     public RegistroEjercicio() {}
 
-    public static RegistrarEjercicio(Ejercicio ejercicio, Entrenamiento entrenamiento, int seriesRealizadas, int repeticionesRealizadas, double pesoAsignado, Date fecha) {
-        RegistroEjercicio _registroEjercicio = new RegistroEjercicio();
-        _registroEjercicio.ejercicio = ejercicio;
-        _registroEjercicio.entrenamiento = entrenamiento;
-        _registroEjercicio.seriesRealizadas = seriesRealizadas;
-        _registroEjercicio.repeticionesRealizadas = repeticionesRealizadas;
-        _registroEjercicio.pesoAsignado = pesoAsignado;
-        _registroEjercicio.fecha = fecha;
+    public RegistroEjercicio(Ejercicio ejercicio, Entrenamiento entrenamiento, int seriesRealizadas, int repeticionesRealizadas, double pesoAsignado, Date fecha) {
+        this.ejercicio = ejercicio;
+        this.entrenamiento = entrenamiento;
+        this.seriesRealizadas = seriesRealizadas;
+        this.repeticionesRealizadas = repeticionesRealizadas;
+        this.pesoAsignado = pesoAsignado;
+        this.fecha = fecha;
 
-        DB.ejerciciosCompletados.add(_registroEjercicio);
+        DB.ejerciciosCompletados.add(this);
     }
 
     public Ejercicio getEjercicio() {
