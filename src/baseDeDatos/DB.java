@@ -19,11 +19,13 @@ public class DB {
 
 
     public static Medicion getUltimaMedicion(String nombreUsuario) {
-        return historialMediciones.stream()
-                .filter(medicion -> medicion.get(1) instanceof Socio && ((Socio) medicion.get(1)).getNombreUsuario().equals(nombreUsuario))  // Filtra por nombre de usuario
+        Medicion ultMed =  historialMediciones.stream()
+                .filter(medicion -> medicion.get(1).equals(nombreUsuario))  // Filtra por nombre de usuario
                 .max(Comparator.comparing(medicion -> (Date) medicion.get(2)))  // Ordena por fecha
                 .map(medicion -> (Medicion) medicion.get(0))  // Obtiene la instancia de Medicion
                 .orElse(null);  // Devuelve null si no hay mediciones para el usuario
+
+        return ultMed;
     }
 
 }
