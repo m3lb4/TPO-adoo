@@ -5,5 +5,7 @@ public class TrofeoConstancia extends Trofeo{
     public void verificarSiOtorgar(Socio socio) {
 
     }
-    public void notificar(){}
+    public void notificar(){
+
+    }
 }

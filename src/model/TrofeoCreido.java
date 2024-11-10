@@ -7,15 +7,9 @@ import java.util.List;
 public class TrofeoCreido extends Trofeo{
     @Override
     public void verificarSiOtorgar(Socio socio) {
-
         if(DB.verificarSiSonDelMismoMes(socio.getNombreUsuario())){
             this.notificar();
         }
-
-
-
-
-
     }
 
 

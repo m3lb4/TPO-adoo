@@ -24,10 +24,18 @@ public class TonificarCuerpo extends Objetivo {
     }
 
     public double calcularMasaIdeal(double peso, int altura){
-        return 0;
+        return peso/Math.pow(altura,2);
     }
 
     public double calcularGrasaIdeal(double peso, int altura, Genero sexo, int edad){
-        return 0;
+        double grasaCorporal=0;
+        if(sexo==Genero.Masculino){
+            grasaCorporal=1.20*calcularMasaIdeal(peso,altura) + (0.23*edad) -(10.8*1)-5.4;
+        }
+        if (sexo==Genero.Mujer){
+            grasaCorporal=1.20*calcularMasaIdeal(peso,altura) + (0.23*edad) -(10.8*2)-5.4;
+        }
+        return grasaCorporal;
+
     }
 }

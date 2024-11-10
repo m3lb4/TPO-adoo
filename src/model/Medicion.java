@@ -43,8 +43,12 @@ public class Medicion extends Observable {
         }
     }
 
-    public void medirGrasaCorporal(Socio socio){}
-    public void medirMasaMuscular(Socio socio){}
+    public void medirGrasaCorporal(Socio socio){
+
+    }
+    public void medirMasaMuscular(Socio socio){
+
+    }
 
     public double getPeso() {
         return peso;
