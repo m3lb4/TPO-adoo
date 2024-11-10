@@ -1,5 +1,8 @@
 package org.example.model;
 
+import org.example.baseDeDatos.DB;
+
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Medicion extends Observable {
@@ -14,13 +17,21 @@ public class Medicion extends Observable {
         grasaCorporal = 0;
     }
 
+    public static Medicion fromObject (List<Object> o) {
 
+
+        if (o.getFirst() instanceof Medicion) {
+            return (Medicion) o.getFirst();
+        }
+        return null;
+    }
 
     public void pesar(Socio socio){
         int randomNum = ThreadLocalRandom.current().nextInt(-3, 3);
         this.peso = socio.getPeso() + randomNum;
-        this.notificar();
+        this.notificarObservacion(socio);
     }
+
     public void medirGrasaCorporal(Socio socio){}
     public void medirMasaMuscular(Socio socio){}
 

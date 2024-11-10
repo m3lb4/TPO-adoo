@@ -9,7 +9,16 @@ public class MantenerLaFigura  extends Objetivo{
     public boolean chequearObj(Socio socio) {
         return socio.getPeso()>= (this.pesoInicial-this.umbralDeOscilacion) || socio.getPeso()<=(this.pesoInicial+this.umbralDeOscilacion);
     }
-    public boolean cumpleCondiciones(){}
+
+
+    public boolean cumpleCondiciones(Ejercicio ejercicio) {
+        if (ejercicio.getNivelAerobico() > 2  && ejercicio.getNivelAerobico() < 4  && ejercicio.getExigenciaMuscular() != ExigenciaMuscular.Alto) {
+            return true;
+        }
+
+
+        return false;
+    }
 
     public double getUmbralDeOscilacion() {
         return umbralDeOscilacion;

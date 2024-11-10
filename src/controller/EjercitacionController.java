@@ -11,13 +11,13 @@ import java.util.Date;
 
 public class EjercitacionController {
 
-    private static EjercitacionController instance = null;
+    private static EjercitacionController instance;
 
-    private EjercitacionController(){}
+    private EjercitacionController () {}
 
     public static EjercitacionController getInstance(){
         if (instance==null){
-            instance=new EjercitacionController();
+            instance = new EjercitacionController();
         }
         return instance;
     }

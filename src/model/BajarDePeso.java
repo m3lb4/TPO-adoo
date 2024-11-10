@@ -5,17 +5,24 @@ public class BajarDePeso extends Objetivo {
 
     @Override
     public boolean chequearObj(Socio socio) {
-        return socio.getPeso()<=pesoIdeal;
+        return socio.getPeso() <= pesoIdeal;
     }
 
-    public boolean cumpleCondiciones(){}
+    public boolean cumpleCondiciones(Ejercicio ejercicio) {
+        if (ejercicio.getNivelAerobico() <= 3) {
+            return true;
+        }
+
+
+        return false;
+    }
 
     public void calcularPesoIdeal(Genero sexo, int edad, int altura){
-        if(sexo=="Masculino"){
-            this.pesoIdeal=altura-100;
+        if(sexo==Genero.Masculino){
+            this.pesoIdeal = altura - 100;
         }
-        if(sexo=="Femenino"){
-            this.pesoIdeal=altura-105;
+        if(sexo==Genero.Femenino){
+            this.pesoIdeal = altura - 105;
         }
     }
 }

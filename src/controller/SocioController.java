@@ -3,6 +3,7 @@ package org.example.controller;
 import org.example.baseDeDatos.DB;
 import org.example.dto.SocioLoginDTO;
 import org.example.dto.SocioRegisterDTO;
+import org.example.model.Auth;
 import org.example.model.IAdapterAuth;
 import org.example.model.Objetivo;
 import org.example.model.Socio;
@@ -16,8 +17,7 @@ public class SocioController {
     private static SocioController instance=null;
     private IAdapterAuth adapterAuth;
 
-    private SocioController(){
-        this.socios=new ArrayList<>();
+    private SocioController(){adapterAuth = new Auth();
     }
     public static SocioController getInstance(){
         if (instance==null){
@@ -26,15 +26,15 @@ public class SocioController {
         return instance;
     }
 
-    public registrarSocio (SocioRegisterDTO socio) {
+    public void registrarSocio (SocioRegisterDTO socio) {
         this.adapterAuth.registrar(socio);
     }
 
-    public loggearSocio (SocioLoginDTO socio) {
-        this.adapterAuth.loggear(socio);
+    public Socio loggearSocio (SocioLoginDTO socio) {
+        return this.adapterAuth.loggear(socio);
     }
 
-    public realizarMediciones(String username) {
+    public void realizarMediciones(String username) {
         for (Socio socio : DB.socios) {
             if (socio.getNombreUsuario() == username) {
                 socio.pesarse();
@@ -46,7 +46,9 @@ public class SocioController {
         }
     }
 
-    public cambiarObjetivo(Objetivo objetivo, Socio socio) {
+    public void cambiarObjetivo(Objetivo objetivo, Socio socio) {
         socio.cambiarObjetivo(objetivo);
     }
+
+
 }

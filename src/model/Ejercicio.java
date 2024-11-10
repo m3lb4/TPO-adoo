@@ -1,5 +1,7 @@
 package org.example.model;
 
+import java.util.Date;
+
 public class Ejercicio {
     private Musculo musculo;
     private int series;
@@ -22,9 +24,10 @@ public class Ejercicio {
     public void iniciarEjercicio(){
 
     }
-    public void finalizarEjercicio(Entrenamiento entrenamiento,  int seriesRealizadas, int repeticionesRealizadas, double pesoAsignado){
+
+    public void finalizarEjercicio(Ejercicio ejercicio , Entrenamiento entrenamiento,  int seriesRealizadas, Socio socio, int repeticionesRealizadas, double pesoAsignado){
         Date fecha=new Date();
-        RegistroEjercicio registro=new RegistroEjercicio(this, entrenamiento, seriesRealizadas, repeticionesRealizadas, pesoAsignado, fecha);
+        RegistroEjercicio registro=new RegistroEjercicio(this, entrenamiento,socio, seriesRealizadas, repeticionesRealizadas, pesoAsignado, fecha);
     }
 
     public Musculo getMusculo() {

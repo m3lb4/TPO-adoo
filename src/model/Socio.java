@@ -17,8 +17,6 @@ public class Socio {
     private List<Trofeo> trofeos;
     private IAdapterAuth adapterAuth;
 
-    public Socio() {
-    }
 
     public Socio(String nombreUsuario, String contrasenia, int edad, Genero sexo, int altura) {
         this.nombreUsuario = nombreUsuario;
@@ -33,7 +31,8 @@ public class Socio {
     }
 
     public void cambiarObjetivo(Objetivo objetivo){
-        this.objetivo=objetivo;
+        this.objetivo = objetivo;
+        this.objetivo.generarRutina();
     }
 
     public String getNombreUsuario() {
@@ -100,14 +99,6 @@ public class Socio {
         this.trofeos = trofeos;
     }
 
-    public List<RegistroEjercicio> getHistorialEjercicios() {
-        return historialEjercicios;
-    }
-
-    public void setHistorialEjercicios(List<RegistroEjercicio> historialEjercicios) {
-        this.historialEjercicios = historialEjercicios;
-    }
-
     public IAdapterAuth getAdapterAuth() {
         return adapterAuth;
     }
@@ -136,6 +127,6 @@ public class Socio {
     }
 
     public  boolean chequearObj(){
-        this.objetivo.chequearObj(this);
+        return this.objetivo.chequearObj(this);
     }
 }

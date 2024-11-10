@@ -14,6 +14,16 @@ public class EjercicioDTO {
     private String exigenciaMuscular;
     private String urlVideo;
 
+    public EjercicioDTO(String musculo, String series, String repeticiones, String pesoAsignado, String nivelAerobico, String exigenciaMuscular, String urlVideo) {
+        this.musculo = musculo;
+        this.series = series;
+        this.repeticiones = repeticiones;
+        this.pesoAsignado = pesoAsignado;
+        this.nivelAerobico = nivelAerobico;
+        this.exigenciaMuscular = exigenciaMuscular;
+        this.urlVideo = urlVideo;
+    }
+
     public String getMusculo() {
         return musculo;
     }

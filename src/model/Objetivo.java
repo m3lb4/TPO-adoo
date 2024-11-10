@@ -7,7 +7,16 @@ public abstract class Objetivo {
     protected Rutina rutina;
 
     public abstract boolean chequearObj(Socio socio);
-    public abstract boolean cumpleCondiciones();
-    public static void generarRutina(){}
+    public abstract boolean cumpleCondiciones(Ejercicio ejercicio);
+    public void generarRutina(){
+        this.rutina = new Rutina(this);
+    }
 
+    public Date getFechaDeInicio() {
+        return fechaDeInicio;
+    }
+
+    public Rutina getRutina() {
+        return rutina;
+    }
 }
