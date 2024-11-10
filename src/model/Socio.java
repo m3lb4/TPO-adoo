@@ -71,6 +71,7 @@ public class Socio {
         return medicion;
     }
 
+
     public void setMedicion(Medicion medicion) {
         this.medicion = medicion;
     }
@@ -119,10 +120,9 @@ public class Socio {
         return this.medicion.getPeso();
     }
 
-    public void pesarse(){ this.medicion.pesar(this);}
-    public void medirGrasaCorporal(){this.medicion.medirGrasaCorporal(this);}
-
-    public void medirMasaMuscular(){
+    public void realizarMediciones(){
+        this.medicion.pesar(this);
+        this.medicion.medirGrasaCorporal(this);
         this.medicion.medirMasaMuscular(this);
     }
 

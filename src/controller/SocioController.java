@@ -3,10 +3,7 @@ package org.example.controller;
 import org.example.baseDeDatos.DB;
 import org.example.dto.SocioLoginDTO;
 import org.example.dto.SocioRegisterDTO;
-import org.example.model.Auth;
-import org.example.model.IAdapterAuth;
-import org.example.model.Objetivo;
-import org.example.model.Socio;
+import org.example.model.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,13 +31,11 @@ public class SocioController {
         return this.adapterAuth.loggear(socio);
     }
 
-    public void realizarMediciones(String username) {
+    public void realizarMediciones(String username, Date date) {
         for (Socio socio : DB.socios) {
             if (socio.getNombreUsuario() == username) {
-                socio.pesarse();
-                socio.medirGrasaCorporal();
-                socio.medirMasaMuscular();
-                List<Object> medicion = Arrays.asList(socio.getMedicion(), socio.getNombreUsuario(), new Date());
+                socio.realizarMediciones();
+                List<Object> medicion = Arrays.asList(new Medicion(socio.getMedicion()), socio.getNombreUsuario(), date);
                 DB.historialMediciones.add(medicion);
             }
         }

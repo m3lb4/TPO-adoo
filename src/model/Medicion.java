@@ -17,6 +17,12 @@ public class Medicion extends Observable {
         grasaCorporal = 0;
     }
 
+    public Medicion(Medicion medicion) {
+        peso = medicion.getPeso();
+        masaMuscular = medicion.getMasaMuscular();
+        grasaCorporal = medicion.getGrasaCorporal();
+    }
+
     public static Medicion fromObject (List<Object> o) {
 
 
@@ -27,9 +33,14 @@ public class Medicion extends Observable {
     }
 
     public void pesar(Socio socio){
-        int randomNum = ThreadLocalRandom.current().nextInt(-3, 3);
-        this.peso = socio.getPeso() + randomNum;
-        this.notificarObservacion(socio);
+        if (socio.getMedicion().getPeso() == 0) {
+            this.peso = ThreadLocalRandom.current().nextInt(60, 80);
+        } else {
+            this.peso = socio.getPeso();
+            int randomNum = ThreadLocalRandom.current().nextInt(-3, 3);
+            this.peso += randomNum;
+            this.notificarObservacion(socio);
+        }
     }
 
     public void medirGrasaCorporal(Socio socio){}

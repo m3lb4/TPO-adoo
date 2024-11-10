@@ -9,6 +9,7 @@ import org.example.dto.SocioRegisterDTO;
 import org.example.model.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -127,22 +128,25 @@ public class Main {
         SocioLoginDTO socioLoginDTO = new SocioLoginDTO("Fran", "Test123");
         Socio socioLoggeado = sController.loggearSocio(socioLoginDTO);
 
-        sController.realizarMediciones(socioLoggeado.getNombreUsuario());
+        SocioRegisterDTO socioRegisterDTO2 = new SocioRegisterDTO("22", "Masculino", "168", "Pepe", "Test123");
+        sController.registrarSocio(socioRegisterDTO2);
+
+        SocioLoginDTO socioLoginDTO2 = new SocioLoginDTO("Pepe", "Test123");
+        Socio socioLoggeado2 = sController.loggearSocio(socioLoginDTO2);
+
+        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024,8,16));
+        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024, 8, 12));
+        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024,8,13));
+        sController.realizarMediciones(socioLoggeado2.getNombreUsuario(), new Date(2024,6,2));
+        sController.realizarMediciones(socioLoggeado2.getNombreUsuario(), new Date(2024, 6, 18));
+        sController.realizarMediciones(socioLoggeado2.getNombreUsuario(), new Date(2024, 6,24));
 
 
-        List<Object> ultMedObj = DB.historialMediciones.getLast(); //DB.getUltimaMedicion(socioLoggeado.getNombreUsuario());
-        Medicion ultMedicion = Medicion.fromObject(ultMedObj);
+        boolean creido = DB.verificarSiSonDelMismoMes(socioLoggeado.getNombreUsuario());
+        boolean creido2 = DB.verificarSiSonDelMismoMes(socioLoggeado2.getNombreUsuario());
 
+            System.out.println("ES CREIDO: "+ creido);
+            System.out.println("ES CREIDO 2: "+ creido2);
 
-        Objetivo obj = new TonificarCuerpo(ultMedicion.getMasaMuscular(), ultMedicion.getGrasaCorporal());
-        sController.cambiarObjetivo(obj, socioLoggeado);
-
-
-        for (Entrenamiento entrenamiento : obj.getRutina().getEntrenamientos()) {
-            System.out.println("Entrenamiento: ");
-            for (Ejercicio ej : entrenamiento.getEjercicios()) {
-                System.out.println(ej.getURLvideo());
-            }
-        }
     }
 }

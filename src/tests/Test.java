@@ -9,6 +9,7 @@ import org.example.dto.SocioRegisterDTO;
 import org.example.model.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -135,8 +136,7 @@ class Test {
         SocioLoginDTO socioLoginDTO = new SocioLoginDTO("Fran", "Test123");
         Socio socioLoggeado = sController.loggearSocio(socioLoginDTO);
 
-        sController.realizarMediciones(socioLoggeado.getNombreUsuario());
-
+        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date());
 
         Medicion ultMedicion = DB.getUltimaMedicion(socioLoggeado.getNombreUsuario());
 
