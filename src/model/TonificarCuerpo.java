@@ -32,7 +32,7 @@ public class TonificarCuerpo extends Objetivo {
         if(sexo==Genero.Masculino){
             grasaCorporal=1.20*calcularMasaIdeal(peso,altura) + (0.23*edad) -(10.8*1)-5.4;
         }
-        if (sexo==Genero.Mujer){
+        if (sexo==Genero.Femenino){
             grasaCorporal=1.20*calcularMasaIdeal(peso,altura) + (0.23*edad) -(10.8*2)-5.4;
         }
         return grasaCorporal;

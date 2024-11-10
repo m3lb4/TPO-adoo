@@ -11,6 +11,7 @@ public class Ejercicio {
     private ExigenciaMuscular exigenciaMuscular;
     private String URLvideo;
 
+
     public Ejercicio(Musculo musculo, int series, int repeticiones, double pesoAsignado, int nivelAerobico, ExigenciaMuscular exigenciaMuscular, String URLvideo) {
         this.musculo = musculo;
         this.series = series;
@@ -19,13 +20,16 @@ public class Ejercicio {
         this.nivelAerobico = nivelAerobico;
         this.exigenciaMuscular = exigenciaMuscular;
         this.URLvideo = URLvideo;
-    }
-
-    public void iniciarEjercicio(){
 
     }
 
-    public void finalizarEjercicio(Ejercicio ejercicio , Entrenamiento entrenamiento,  int seriesRealizadas, Socio socio, int repeticionesRealizadas, double pesoAsignado){
+    public void iniciarEjercicio(Entrenamiento entrenamiento,int seriesRealizadas, Socio socio, int repeticionesRealizadas, double pesoAsignado){
+
+        this.finalizarEjercicio(entrenamiento, seriesRealizadas, socio,  repeticionesRealizadas, pesoAsignado);
+
+    }
+
+    public void finalizarEjercicio(Entrenamiento entrenamiento,  int seriesRealizadas, Socio socio, int repeticionesRealizadas, double pesoAsignado){
         Date fecha=new Date();
         RegistroEjercicio registro=new RegistroEjercicio(this, entrenamiento,socio, seriesRealizadas, repeticionesRealizadas, pesoAsignado, fecha);
     }
@@ -53,6 +57,7 @@ public class Ejercicio {
     public void setRepeticiones(int repeticiones) {
         this.repeticiones = repeticiones;
     }
+
 
     public double getPesoAsignado() {
         return pesoAsignado;

@@ -128,25 +128,12 @@ public class Main {
         SocioLoginDTO socioLoginDTO = new SocioLoginDTO("Fran", "Test123");
         Socio socioLoggeado = sController.loggearSocio(socioLoginDTO);
 
-        SocioRegisterDTO socioRegisterDTO2 = new SocioRegisterDTO("22", "Masculino", "168", "Pepe", "Test123");
-        sController.registrarSocio(socioRegisterDTO2);
-
-        SocioLoginDTO socioLoginDTO2 = new SocioLoginDTO("Pepe", "Test123");
-        Socio socioLoggeado2 = sController.loggearSocio(socioLoginDTO2);
+        sController.cambiarObjetivo(new TonificarCuerpo(socioLoggeado.getMasaMuscular(), socioLoggeado.getGrasaCorporal()), socioLoggeado);
 
         sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024,8,16));
         sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024, 8, 12));
-        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024,8,13));
-        sController.realizarMediciones(socioLoggeado2.getNombreUsuario(), new Date(2024,6,2));
-        sController.realizarMediciones(socioLoggeado2.getNombreUsuario(), new Date(2024, 6, 18));
-        sController.realizarMediciones(socioLoggeado2.getNombreUsuario(), new Date(2024, 6,24));
+        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024,9,13));
 
-
-        boolean creido = DB.verificarSiSonDelMismoMes(socioLoggeado.getNombreUsuario());
-        boolean creido2 = DB.verificarSiSonDelMismoMes(socioLoggeado2.getNombreUsuario());
-
-            System.out.println("ES CREIDO: "+ creido);
-            System.out.println("ES CREIDO 2: "+ creido2);
 
     }
 }

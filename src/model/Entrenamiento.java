@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Entrenamiento {
     private List<Ejercicio> ejercicios;
-    private boolean entrenamientoFinalizado;
+    private String entrenamientoFinalizado;
 
     public Entrenamiento(Objetivo objetivo) {
         this.ejercicios = new ArrayList<>();
@@ -22,14 +22,16 @@ public class Entrenamiento {
             }
         }
 
-        this.entrenamientoFinalizado = false;
+        this.entrenamientoFinalizado = "Creado";
     }
 
-    public void iniciarEntrenamiento(){
-        this.entrenamientoFinalizado=false;
+    public void iniciarEntrenamiento() {
+
+        this.entrenamientoFinalizado = "Iniciado";
     }
+
     public void finalizarEntrenamiento(){
-        this.entrenamientoFinalizado=true;
+        this.entrenamientoFinalizado = "Finalizado";
     }
 
     public List<Ejercicio> getEjercicios() {
@@ -40,7 +42,7 @@ public class Entrenamiento {
         this.ejercicios = ejercicios;
     }
 
-    public boolean isEntrenamientoFinalizado() {
+    public String isEntrenamientoFinalizado() {
         return entrenamientoFinalizado;
     }
 }

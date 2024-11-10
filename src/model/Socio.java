@@ -4,6 +4,8 @@ import org.example.dto.SocioLoginDTO;
 import org.example.dto.SocioRegisterDTO;
 
 import java.util.ArrayList;
+
+import java.util.Date;
 import java.util.List;
 
 public class Socio {
@@ -120,13 +122,15 @@ public class Socio {
         return this.medicion.getPeso();
     }
 
-    public void realizarMediciones(){
-        this.medicion.pesar(this);
-        this.medicion.medirGrasaCorporal(this);
-        this.medicion.medirMasaMuscular(this);
+    public void realizarMediciones(Date date){
+        this.medicion.realizarMediciones(this, date);
     }
 
     public  boolean chequearObj(){
+        if (this.objetivo != null){
         return this.objetivo.chequearObj(this);
+        } else {
+            return false;
+        }
     }
 }

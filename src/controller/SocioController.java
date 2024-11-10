@@ -34,9 +34,7 @@ public class SocioController {
     public void realizarMediciones(String username, Date date) {
         for (Socio socio : DB.socios) {
             if (socio.getNombreUsuario() == username) {
-                socio.realizarMediciones();
-                List<Object> medicion = Arrays.asList(new Medicion(socio.getMedicion()), socio.getNombreUsuario(), date);
-                DB.historialMediciones.add(medicion);
+                socio.realizarMediciones(date);
             }
         }
     }

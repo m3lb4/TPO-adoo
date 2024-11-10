@@ -2,10 +2,7 @@ package org.example.controller;
 
 import org.example.baseDeDatos.DB;
 import org.example.dto.EjercicioDTO;
-import org.example.model.Ejercicio;
-import org.example.model.Entrenamiento;
-import org.example.model.RegistroEjercicio;
-import org.example.model.Socio;
+import org.example.model.*;
 
 import java.util.Date;
 
@@ -22,10 +19,39 @@ public class EjercitacionController {
         return instance;
     }
 
-    public void iniciarRutina(){}
-    public void finalizarRutina(){}
-    public void iniciarEntrenamiento(){}
-    public void finalizarEntrenamiento(){}
+    public void iniciarRutina(Rutina rutina){
+
+        rutina.iniciarRutina();
+
+
+    }
+
+    public void finalizarRutina(Rutina rutina){
+        rutina.finalizarRutina();
+    }
+
+
+    public void iniciarEntrenamiento(Rutina rutina, Entrenamiento entrenamiento){
+
+        if(rutina.getRutinaFinalizada() == "Iniciada"){
+            entrenamiento.iniciarEntrenamiento();
+
+        }else{
+            System.out.println("La rutina no esta iniciada");
+        }
+
+    }
+    public void finalizarEntrenamiento(Rutina rutina, Entrenamiento entrenamiento){
+        if(rutina.getRutinaFinalizada() == "Iniciada"){
+            entrenamiento.finalizarEntrenamiento();
+
+        }else{
+            System.out.println("La rutina no esta iniciada");
+        }
+
+    }
+
+
 
     public void agregarEjercicio(EjercicioDTO ejercicio){
         Ejercicio _ejercicio = ejercicio.toModel();
@@ -34,7 +60,12 @@ public class EjercitacionController {
     }
 
     public void registrarEjercicio(Ejercicio ejercicio, Entrenamiento entrenamiento,  Socio socio, int seriesRealizadas, int repeticionesRealizadas, double pesoAsignado){
-        new RegistroEjercicio(ejercicio,entrenamiento, socio, seriesRealizadas,repeticionesRealizadas, pesoAsignado, new Date());
+        if (entrenamiento.isEntrenamientoFinalizado() == "Iniciado"){
+
+            new RegistroEjercicio(ejercicio,entrenamiento, socio, seriesRealizadas,repeticionesRealizadas, pesoAsignado, new Date());
+        }else{
+            System.out.println("El entrenamiento no esta iniciado");
+        }
     }
 
 

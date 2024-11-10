@@ -7,6 +7,7 @@ import java.util.List;
 public class TrofeoCreido extends Trofeo{
     @Override
     public void verificarSiOtorgar(Socio socio) {
+
         if(DB.verificarSiSonDelMismoMes(socio.getNombreUsuario())){
             this.notificar();
         }
@@ -14,6 +15,6 @@ public class TrofeoCreido extends Trofeo{
 
 
     public void notificar(){
-        System.out.println("Notificando Trofeo");
+        this.getNotificador().notificar(new Notificacion("Trofeo creido obtenido"));
     }
 }

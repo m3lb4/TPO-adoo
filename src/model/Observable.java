@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public abstract class Observable {
 
-    private List<Trofeo> observadores;
+    private List<Trofeo> observadores = new ArrayList<>();
 
     public void agregar(Trofeo observador){
         observadores.add(observador);

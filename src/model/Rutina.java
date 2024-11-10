@@ -3,13 +3,16 @@ package org.example.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Rutina {
+public class Rutina extends Observable {
     private int diasRestantes;
     private List<Entrenamiento> entrenamientos;
+    private String rutinaFinalizada;
 
     public Rutina(int diasRestantes, List<Entrenamiento> entrenamientos) {
         this.diasRestantes = diasRestantes;
         this.entrenamientos = entrenamientos;
+        this.agregar(new TrofeoConstancia());
+        rutinaFinalizada = "Creada";
     }
 
 
@@ -22,10 +25,14 @@ public class Rutina {
         this.diasRestantes = 28;
     }
 
-    public void iniciarRutina(){
+
+    public void iniciarRutina() {
+        this.rutinaFinalizada = "Iniciada";
 
     }
+
     public void finalizarRutina(){
+        this.rutinaFinalizada = "Finalizada";
 
     }
 
@@ -35,5 +42,21 @@ public class Rutina {
 
     public List<Entrenamiento> getEntrenamientos() {
         return entrenamientos;
+    }
+
+    public String getRutinaFinalizada() {
+        return rutinaFinalizada;
+    }
+
+    public void setRutinaFinalizada(String rutinaFinalizada) {
+        this.rutinaFinalizada = rutinaFinalizada;
+    }
+
+    public void setDiasRestantes(int diasRestantes) {
+        this.diasRestantes = diasRestantes;
+    }
+
+    public void setEntrenamientos(List<Entrenamiento> entrenamientos) {
+        this.entrenamientos = entrenamientos;
     }
 }
