@@ -26,8 +26,9 @@ public class EjercitacionController {
 
     }
 
-    public void finalizarRutina(Rutina rutina){
-        rutina.finalizarRutina();
+    public void finalizarRutina(Rutina rutina,Socio socio){
+
+        rutina.finalizarRutina(socio);
     }
 
 

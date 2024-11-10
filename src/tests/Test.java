@@ -166,7 +166,8 @@ class Test {
 
         sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024,8,10));
         sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024, 8, 20));
-        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024,8,25));
+        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024, 8, 25));
+
 
     }
 }

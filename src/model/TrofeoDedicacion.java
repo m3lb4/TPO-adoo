@@ -9,6 +9,6 @@ public class TrofeoDedicacion extends Trofeo
         }
     }
     public void notificar(){
-        System.out.println("Trofeo dedicacion otorgado.");
+        System.out.println("Trofeo dedicacion obtenido");
     }
 }

@@ -31,9 +31,10 @@ public class Rutina extends Observable {
 
     }
 
-    public void finalizarRutina(){
+    public void finalizarRutina(Socio socio) {
         this.rutinaFinalizada = "Finalizada";
 
+        this.notificarObservacion(socio);
     }
 
     public int getDiasRestantes() {
