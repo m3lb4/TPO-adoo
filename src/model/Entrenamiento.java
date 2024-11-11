@@ -42,9 +42,6 @@ public class Entrenamiento {
         this.ejercicios = ejercicios;
     }
 
-    public String isEntrenamientoFinalizado() {
-        return estadoEntrenamiento;
-    }
 
     public String getEstadoEntrenamiento() {
         return estadoEntrenamiento;

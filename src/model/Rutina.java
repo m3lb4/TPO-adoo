@@ -8,12 +8,6 @@ public class Rutina extends Observable {
     private List<Entrenamiento> entrenamientos;
     private String estadoRutina;
 
-    public Rutina(int diasRestantes, List<Entrenamiento> entrenamientos) {
-        this.diasRestantes = diasRestantes;
-        this.entrenamientos = entrenamientos;
-        this.agregar(new TrofeoConstancia());
-        estadoRutina = "Creada";
-    }
 
 
     public Rutina (Objetivo objetivo) {
@@ -23,6 +17,8 @@ public class Rutina extends Observable {
         }
         this.entrenamientos = entrenamientos;
         this.diasRestantes = 28;
+        this.agregar(new TrofeoConstancia());
+        estadoRutina = "Creada";
     }
 
 

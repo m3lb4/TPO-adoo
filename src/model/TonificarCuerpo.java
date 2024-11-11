@@ -11,7 +11,7 @@ public class TonificarCuerpo extends Objetivo {
 
     @Override
     public boolean chequearObj(Socio socio) {
-        return socio.getMasaMuscular() == calcularMasaIdeal(socio.getPeso(), socio.getAltura()) && socio.getGrasaCorporal() == calcularGrasaIdeal(socio.getPeso(), socio.getAltura(), socio.getSexo, socio.getEdad());
+        return socio.getMasaMuscular() == calcularMasaIdeal(socio.getPeso(), socio.getAltura()) && socio.getGrasaCorporal() == calcularGrasaIdeal(socio.getPeso(), socio.getAltura(), socio.getSexo(), socio.getEdad());
     }
 
     public boolean cumpleCondiciones(Ejercicio ejercicio) {

@@ -2,10 +2,7 @@ package org.example.model;
 
 import org.example.baseDeDatos.DB;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class TrofeoCreido extends Trofeo{
@@ -20,7 +17,7 @@ public class TrofeoCreido extends Trofeo{
                 .limit(3)
                 .collect(Collectors.toList());
 
-        if (ultimasMediciones.size() < 3 || DB.tieneTrofeo(socio.getNombreUsuario)) {
+        if (ultimasMediciones.size() < 3 || DB.tieneTrofeo(socio.getNombreUsuario(),this)) {
             sePeso3Veces = false;
         }
 
@@ -38,7 +35,11 @@ public class TrofeoCreido extends Trofeo{
         }
 
         if (sePeso3Veces) {
-            this.notificar();
+            if (!DB.tieneTrofeo(socio.getNombreUsuario(), this )){
+                List<Object> trofeos = Arrays.asList(socio.getNombreUsuario(), this);
+                DB.trofeosPorSocio.add(trofeos);
+                this.notificar();
+            }
         }
 
 

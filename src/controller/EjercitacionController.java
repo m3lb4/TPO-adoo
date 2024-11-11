@@ -34,7 +34,7 @@ public class EjercitacionController {
 
     public void iniciarEntrenamiento(Rutina rutina, Entrenamiento entrenamiento){
 
-        if(rutina.getRutinaFinalizada() == "Iniciada"){
+        if(rutina.getEstadoRutina() == "Iniciada"){
             entrenamiento.iniciarEntrenamiento();
 
         }else{
@@ -43,7 +43,7 @@ public class EjercitacionController {
 
     }
     public void finalizarEntrenamiento(Rutina rutina, Entrenamiento entrenamiento){
-        if(rutina.getRutinaFinalizada() == "Iniciada"){
+        if(rutina.getEstadoRutina() == "Iniciada"){
             entrenamiento.finalizarEntrenamiento();
 
         }else{
@@ -60,7 +60,7 @@ public class EjercitacionController {
     }
 
     public void registrarEjercicio(Ejercicio ejercicio, Entrenamiento entrenamiento,  Socio socio, int seriesRealizadas, int repeticionesRealizadas, double pesoAsignado){
-        if (entrenamiento.isEntrenamientoFinalizado() == "Iniciado"){
+        if (entrenamiento.getEstadoEntrenamiento() == "Iniciado"){
 
             new RegistroEjercicio(ejercicio,entrenamiento, socio, seriesRealizadas,repeticionesRealizadas, pesoAsignado, new Date());
         }else{

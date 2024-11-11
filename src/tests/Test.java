@@ -172,6 +172,7 @@ class Test {
 
     @org.junit.jupiter.api.Test
     void obtenerTrofeoConstancia(){
+        EjercitacionController eController = EjercitacionController.getInstance();
         SocioController sController = SocioController.getInstance();
         SocioRegisterDTO socioRegisterDTO = new SocioRegisterDTO("24", "Masculino", "178", "Fran", "Test123");
         sController.registrarSocio(socioRegisterDTO);
@@ -180,6 +181,28 @@ class Test {
         Socio socioLoggeado = sController.loggearSocio(socioLoginDTO);
 
         sController.cambiarObjetivo(new TonificarCuerpo(socioLoggeado.getMasaMuscular(), socioLoggeado.getGrasaCorporal()), socioLoggeado);
+
+        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date());
+
+        Medicion ultMedicion = DB.getUltimaMedicion(socioLoggeado.getNombreUsuario());
+
+
+        Objetivo obj = new TonificarCuerpo(ultMedicion.getMasaMuscular(), ultMedicion.getGrasaCorporal());
+        sController.cambiarObjetivo(obj, socioLoggeado);
+
+        Rutina rutina = socioLoggeado.getObjetivo().getRutina();
+
+        eController.iniciarRutina(rutina);
+        System.out.println("Rutina: " + rutina.getEstadoRutina());
+
+        for (Entrenamiento entrenamiento: rutina.getEntrenamientos()){
+            eController.iniciarEntrenamiento(rutina, entrenamiento);
+            eController.finalizarEntrenamiento(rutina, entrenamiento);
+        }
+
+
+        eController.finalizarRutina(rutina,socioLoggeado);
+
 
     }
 
@@ -206,17 +229,83 @@ class Test {
         SocioLoginDTO socioLoginDTO = new SocioLoginDTO("Fran", "Test123");
         Socio socioLoggeado = sController.loggearSocio(socioLoginDTO);
 
-        sController.cambiarObjetivo(new TonificarCuerpo(socioLoggeado.getMasaMuscular(), socioLoggeado.getGrasaCorporal()), socioLoggeado);
+        Objetivo obj = new TonificarCuerpo(socioLoggeado.getMasaMuscular(), socioLoggeado.getGrasaCorporal());
+                sController.cambiarObjetivo(obj, socioLoggeado);
 
-        sController.cambiarObjetivo(new BajarDePeso());
+            System.out.println("Rutina 1");
+        System.out.println("Obj1: " + obj);
+
+
+        obj = new BajarDePeso();
+        sController.cambiarObjetivo(obj, socioLoggeado);
+
+        System.out.println("Rutina 2");
+        System.out.println("Obj2: " + obj);
+
     }
 
+    @org.junit.jupiter.api.Test
     void reforzarRutina(){
+        SocioController sController = SocioController.getInstance();
+        EjercitacionController eController = EjercitacionController.getInstance();
+        SocioRegisterDTO socioRegisterDTO = new SocioRegisterDTO("24", "Masculino", "178", "Fran", "Test123");
+        sController.registrarSocio(socioRegisterDTO);
 
+        SocioLoginDTO socioLoginDTO = new SocioLoginDTO("Fran", "Test123");
+        Socio socioLoggeado = sController.loggearSocio(socioLoginDTO);
+
+        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date());
+
+        Medicion ultMedicion = DB.getUltimaMedicion(socioLoggeado.getNombreUsuario());
+
+
+        Objetivo obj = new TonificarCuerpo(ultMedicion.getMasaMuscular(), ultMedicion.getGrasaCorporal());
+        sController.cambiarObjetivo(obj, socioLoggeado);
+
+        Rutina rutina = socioLoggeado.getObjetivo().getRutina();
+
+        eController.iniciarRutina(rutina);
+        System.out.println("Rutina: " + rutina.getEstadoRutina());
+
+        Entrenamiento primerEntrenamiento = rutina.getEntrenamientos().getFirst();
+        eController.iniciarEntrenamiento(rutina, primerEntrenamiento);
+        System.out.println("Entrenamiento: " + primerEntrenamiento.getEstadoEntrenamiento());
+
+        Ejercicio primerEjercicio = primerEntrenamiento.getEjercicios().getFirst();
+        Refuerzo ejercicioReforzado = new Refuerzo(primerEjercicio, 20, 15, 100);
+        System.out.println("Ejercicio Reforzado: Series: " + ejercicioReforzado.getSeries() + ", Repeticiones: " + ejercicioReforzado.getRepeticiones() + ", Peso: " + ejercicioReforzado.getPeso() );
     }
 
+    @org.junit.jupiter.api.Test
     void registroEjercicios(){
-        
+        SocioController sController = SocioController.getInstance();
+        EjercitacionController eController = EjercitacionController.getInstance();
+        SocioRegisterDTO socioRegisterDTO = new SocioRegisterDTO("24", "Masculino", "178", "Fran", "Test123");
+        sController.registrarSocio(socioRegisterDTO);
+
+        SocioLoginDTO socioLoginDTO = new SocioLoginDTO("Fran", "Test123");
+        Socio socioLoggeado = sController.loggearSocio(socioLoginDTO);
+
+        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date());
+
+        Medicion ultMedicion = DB.getUltimaMedicion(socioLoggeado.getNombreUsuario());
+
+
+        Objetivo obj = new TonificarCuerpo(ultMedicion.getMasaMuscular(), ultMedicion.getGrasaCorporal());
+        sController.cambiarObjetivo(obj, socioLoggeado);
+
+        Rutina rutina = socioLoggeado.getObjetivo().getRutina();
+
+        eController.iniciarRutina(rutina);
+        System.out.println("Rutina: " + rutina.getEstadoRutina());
+
+        Entrenamiento primerEntrenamiento = rutina.getEntrenamientos().getFirst();
+        eController.iniciarEntrenamiento(rutina, primerEntrenamiento);
+        System.out.println("Entrenamiento: " + primerEntrenamiento.getEstadoEntrenamiento());
+
+        Ejercicio primerEjercicio = primerEntrenamiento.getEjercicios().getFirst();
+        eController.registrarEjercicio(primerEjercicio, primerEntrenamiento, socioLoggeado, 4, 12, 10);
+        System.out.println("Ejercicio: " + DB.ejerciciosCompletados.getFirst().getEjercicio().getURLvideo());
     }
 
 

@@ -1,5 +1,9 @@
 package org.example.model;
 
+import org.example.baseDeDatos.DB;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TrofeoConstancia extends Trofeo{
@@ -10,14 +14,23 @@ public class TrofeoConstancia extends Trofeo{
         List<Entrenamiento> entrenamientos = socio.getObjetivo().getRutina().getEntrenamientos();
         boolean todosFinalizados = true;
         for (Entrenamiento entrenamiento : entrenamientos) {
-            if (entrenamiento.isEntrenamientoFinalizado() != "Finalizado") {
+            if (entrenamiento.getEstadoEntrenamiento() != "Finalizado") {
                 todosFinalizados = false;
+                System.out.println("pase");
                 break;
+
             }
         }
 
         if (todosFinalizados) {
-            this.notificar();
+
+
+            if (!DB.tieneTrofeo(socio.getNombreUsuario(), this )){
+                List<Object> trofeos = Arrays.asList(socio.getNombreUsuario(), this);
+                DB.trofeosPorSocio.add(trofeos);
+                this.notificar();
+            }
+
         }
     }
     public void notificar(){

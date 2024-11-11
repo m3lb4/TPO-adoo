@@ -1,9 +1,6 @@
 package org.example.baseDeDatos;
 
-import org.example.model.Ejercicio;
-import org.example.model.Medicion;
-import org.example.model.RegistroEjercicio;
-import org.example.model.Socio;
+import org.example.model.*;
 
 import java.util.*;
 
@@ -15,7 +12,7 @@ public class DB {
     public static List<Ejercicio> ejercicios = new ArrayList<>();
     public static List<RegistroEjercicio> ejerciciosCompletados = new ArrayList<>();
     public static List<List<Object>> historialMediciones = new ArrayList<>();
-    public static List<List<Object>> trofeosPorUsuario= new ArrayList<>();
+    public static List<List<Object>> trofeosPorSocio= new ArrayList<>();
 
 
     public static Medicion getUltimaMedicion(String nombreUsuario) {
@@ -46,14 +43,19 @@ public class DB {
     }*/
 
     public static boolean tieneTrofeo(String nombreUsuario, Trofeo trofeo){
-        for (List<Object> trofeosUsuario: trofeosPorUsuario){
-            if (trofeosUsuario.get(0).equals(nombreUsuario)){
-                List<Trofeo> listaTrofeos = (List<Trofeo>) trofeosUsuario.get(1);
-                for (Object trofeoUsuario : trofeosUsuario.get(1) ){
-                    if(trofeoUsuario.equals(trofeo)){
-                        return true;
-                    }
-                }
+
+        List<Trofeo> listaTrofeos = new ArrayList<>();
+
+        for (List<Object> trofeosXSocio: trofeosPorSocio){
+            if (trofeosXSocio.get(0).equals(nombreUsuario)){
+                listaTrofeos.add((Trofeo) trofeosXSocio.get(1));
+
+            }
+        }
+
+        for (Object trofeosSocio : listaTrofeos ){
+            if(trofeosSocio.equals(trofeo)){
+                return true;
             }
         }
         return false;
