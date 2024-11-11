@@ -20,8 +20,7 @@ public class TrofeoCreido extends Trofeo{
                 .limit(3)
                 .collect(Collectors.toList());
 
-        if (ultimasMediciones.size() < 3) {
-
+        if (ultimasMediciones.size() < 3 || DB.tieneTrofeo(socio.getNombreUsuario)) {
             sePeso3Veces = false;
         }
 
@@ -32,7 +31,9 @@ public class TrofeoCreido extends Trofeo{
         for (List<Object> mediciones : ultimasMediciones ){
             Date fecha = (Date) mediciones.get(2);
             int mes = fecha.getMonth();
-            if(mes != mesPrimero){sePeso3Veces = false;}
+            if(mes != mesPrimero){
+                sePeso3Veces = false;
+            }
 
         }
 

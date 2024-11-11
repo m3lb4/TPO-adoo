@@ -6,6 +6,16 @@ public class Refuerzo {
     private int repeticiones;
     private double peso;
 
+    public Refuerzo() {
+    }
+
+    public Refuerzo(Ejercicio ejercicio, int series, int repeticiones, double peso) {
+        this.ejercicio = ejercicio;
+        this.series = series;
+        this.repeticiones = repeticiones;
+        this.peso = peso;
+    }
+
     public int getSeries() {
         return series;
     }

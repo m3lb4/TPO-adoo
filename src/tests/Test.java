@@ -168,6 +168,32 @@ class Test {
         sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024, 8, 20));
         sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date(2024, 8, 25));
 
+    }
 
+    @org.junit.jupiter.api.Test
+    void obtenerTrofeoConstancia(){
+        SocioController sController = SocioController.getInstance();
+        SocioRegisterDTO socioRegisterDTO = new SocioRegisterDTO("24", "Masculino", "178", "Fran", "Test123");
+        sController.registrarSocio(socioRegisterDTO);
+
+        SocioLoginDTO socioLoginDTO = new SocioLoginDTO("Fran", "Test123");
+        Socio socioLoggeado = sController.loggearSocio(socioLoginDTO);
+
+        sController.cambiarObjetivo(new TonificarCuerpo(socioLoggeado.getMasaMuscular(), socioLoggeado.getGrasaCorporal()), socioLoggeado);
+
+    }
+
+    @org.junit.jupiter.api.Test
+    void obtenerTrofeoDedicacion(){
+        SocioController sController = SocioController.getInstance();
+        SocioRegisterDTO socioRegisterDTO = new SocioRegisterDTO("24", "Masculino", "178", "Fran", "Test123");
+        sController.registrarSocio(socioRegisterDTO);
+
+        SocioLoginDTO socioLoginDTO = new SocioLoginDTO("Fran", "Test123");
+        Socio socioLoggeado = sController.loggearSocio(socioLoginDTO);
+
+        sController.cambiarObjetivo(new TonificarCuerpo(socioLoggeado.getMasaMuscular(), socioLoggeado.getGrasaCorporal()), socioLoggeado);
+
+        socioLoggeado.chequearObj();
     }
 }
