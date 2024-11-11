@@ -196,4 +196,28 @@ class Test {
 
         socioLoggeado.chequearObj();
     }
+
+    @org.junit.jupiter.api.Test
+    void cambiarObjetivo(){
+        SocioController sController = SocioController.getInstance();
+        SocioRegisterDTO socioRegisterDTO = new SocioRegisterDTO("24", "Masculino", "178", "Fran", "Test123");
+        sController.registrarSocio(socioRegisterDTO);
+
+        SocioLoginDTO socioLoginDTO = new SocioLoginDTO("Fran", "Test123");
+        Socio socioLoggeado = sController.loggearSocio(socioLoginDTO);
+
+        sController.cambiarObjetivo(new TonificarCuerpo(socioLoggeado.getMasaMuscular(), socioLoggeado.getGrasaCorporal()), socioLoggeado);
+
+        sController.cambiarObjetivo(new BajarDePeso());
+    }
+
+    void reforzarRutina(){
+
+    }
+
+    void registroEjercicios(){
+        
+    }
+
+
 }

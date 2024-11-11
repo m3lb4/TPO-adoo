@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Entrenamiento {
     private List<Ejercicio> ejercicios;
-    private String entrenamientoFinalizado;
+    private String estadoEntrenamiento;
 
     public Entrenamiento(Objetivo objetivo) {
         this.ejercicios = new ArrayList<>();
@@ -22,16 +22,16 @@ public class Entrenamiento {
             }
         }
 
-        this.entrenamientoFinalizado = "Creado";
+        this.estadoEntrenamiento = "Creado";
     }
 
     public void iniciarEntrenamiento() {
 
-        this.entrenamientoFinalizado = "Iniciado";
+        this.estadoEntrenamiento = "Iniciado";
     }
 
     public void finalizarEntrenamiento(){
-        this.entrenamientoFinalizado = "Finalizado";
+        this.estadoEntrenamiento = "Finalizado";
     }
 
     public List<Ejercicio> getEjercicios() {
@@ -43,6 +43,10 @@ public class Entrenamiento {
     }
 
     public String isEntrenamientoFinalizado() {
-        return entrenamientoFinalizado;
+        return estadoEntrenamiento;
+    }
+
+    public String getEstadoEntrenamiento() {
+        return estadoEntrenamiento;
     }
 }

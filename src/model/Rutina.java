@@ -6,13 +6,13 @@ import java.util.List;
 public class Rutina extends Observable {
     private int diasRestantes;
     private List<Entrenamiento> entrenamientos;
-    private String rutinaFinalizada;
+    private String estadoRutina;
 
     public Rutina(int diasRestantes, List<Entrenamiento> entrenamientos) {
         this.diasRestantes = diasRestantes;
         this.entrenamientos = entrenamientos;
         this.agregar(new TrofeoConstancia());
-        rutinaFinalizada = "Creada";
+        estadoRutina = "Creada";
     }
 
 
@@ -27,12 +27,12 @@ public class Rutina extends Observable {
 
 
     public void iniciarRutina() {
-        this.rutinaFinalizada = "Iniciada";
+        this.estadoRutina = "Iniciada";
 
     }
 
     public void finalizarRutina(Socio socio) {
-        this.rutinaFinalizada = "Finalizada";
+        this.estadoRutina = "Finalizada";
 
         this.notificarObservacion(socio);
     }
@@ -45,12 +45,12 @@ public class Rutina extends Observable {
         return entrenamientos;
     }
 
-    public String getRutinaFinalizada() {
-        return rutinaFinalizada;
+    public String getEstadoRutina() {
+        return estadoRutina;
     }
 
-    public void setRutinaFinalizada(String rutinaFinalizada) {
-        this.rutinaFinalizada = rutinaFinalizada;
+    public void setEstadoRutina(String estadoRutina) {
+        this.estadoRutina = estadoRutina;
     }
 
     public void setDiasRestantes(int diasRestantes) {
