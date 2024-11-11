@@ -3,7 +3,6 @@ package org.example.model;
 public class MantenerLaFigura  extends Objetivo{
     private double umbralDeOscilacion;
     private double pesoInicial;
-    //Segun consigna: Este objetivo se cumple si el peso oscila entre +-N unidades en comparación con el peso inicial (siendo N un valor configurable).
 
     @Override
     public boolean chequearObj(Socio socio) {

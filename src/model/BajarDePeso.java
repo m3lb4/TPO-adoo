@@ -3,8 +3,17 @@ package org.example.model;
 public class BajarDePeso extends Objetivo {
     private double pesoIdeal;
 
+    public BajarDePeso(Socio socio) {
+        this.calcularPesoIdeal(socio.getSexo(), socio.getEdad(), socio.getAltura());
+    }
+
+    public double getPesoIdeal() {
+        return pesoIdeal;
+    }
+
     @Override
     public boolean chequearObj(Socio socio) {
+  
         return socio.getPeso() <= pesoIdeal;
     }
 

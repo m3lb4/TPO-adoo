@@ -40,7 +40,9 @@ public class Medicion extends Observable {
 
     public void pesar(Socio socio){
         if (socio.getPeso() == 0) {
-            this.peso = ThreadLocalRandom.current().nextInt(60, 80);
+
+            this.peso = socio.getAltura() - 95;
+
         } else {
             this.peso = socio.getPeso();
             int randomNum = ThreadLocalRandom.current().nextInt(-3, 3);

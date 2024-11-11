@@ -16,7 +16,6 @@ public class TrofeoConstancia extends Trofeo{
         for (Entrenamiento entrenamiento : entrenamientos) {
             if (entrenamiento.getEstadoEntrenamiento() != "Finalizado") {
                 todosFinalizados = false;
-                System.out.println("pase");
                 break;
 
             }

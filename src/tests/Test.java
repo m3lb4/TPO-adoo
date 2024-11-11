@@ -215,9 +215,18 @@ class Test {
         SocioLoginDTO socioLoginDTO = new SocioLoginDTO("Fran", "Test123");
         Socio socioLoggeado = sController.loggearSocio(socioLoginDTO);
 
-        sController.cambiarObjetivo(new TonificarCuerpo(socioLoggeado.getMasaMuscular(), socioLoggeado.getGrasaCorporal()), socioLoggeado);
+        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date());
+        BajarDePeso obj = new BajarDePeso(socioLoggeado);
+        sController.cambiarObjetivo(obj, socioLoggeado);
 
-        socioLoggeado.chequearObj();
+        System.out.println("Peso Inicial: " + socioLoggeado.getPeso());
+        System.out.println("Peso Ideal: " + obj.getPesoIdeal());
+
+        while (obj.getPesoIdeal() < socioLoggeado.getPeso()) {
+            sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date());
+        System.out.println("Peso Actual: " + socioLoggeado.getPeso());
+        }
+        
     }
 
     @org.junit.jupiter.api.Test
@@ -236,7 +245,7 @@ class Test {
         System.out.println("Obj1: " + obj);
 
 
-        obj = new BajarDePeso();
+        obj = new BajarDePeso(socioLoggeado);
         sController.cambiarObjetivo(obj, socioLoggeado);
 
         System.out.println("Rutina 2");
