@@ -13,7 +13,7 @@ public class BajarDePeso extends Objetivo {
 
     @Override
     public boolean chequearObj(Socio socio) {
-  
+
         return socio.getPeso() <= pesoIdeal;
     }
 

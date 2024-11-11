@@ -25,23 +25,6 @@ public class DB {
         return ultMed;
     }
 
-   /* public static Medicion getUltimaMedicion(String nombreUsuario) {
-        Medicion ultimaMedicion = null;
-        Date fechaUltimaMedicion = null;
-
-        for (List<Object> medicion : historialMediciones) {
-            if (medicion.get(1).equals(nombreUsuario)) {
-                Date fechaActual = (Date) medicion.get(2);
-                if (fechaUltimaMedicion == null || fechaActual.after(fechaUltimaMedicion)) {
-                    fechaUltimaMedicion = fechaActual;
-                    ultimaMedicion = (Medicion) medicion.get(0);
-                }
-            }
-        }
-
-        return ultimaMedicion;
-    }*/
-
     public static boolean tieneTrofeo(String nombreUsuario, Trofeo trofeo){
 
         List<Trofeo> listaTrofeos = new ArrayList<>();

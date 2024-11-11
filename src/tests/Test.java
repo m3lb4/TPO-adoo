@@ -129,28 +129,36 @@ class Test {
 
     @org.junit.jupiter.api.Test
     void crearRutina() {
+        //Instancio el socio controller
         SocioController sController = SocioController.getInstance();
-        SocioRegisterDTO socioRegisterDTO = new SocioRegisterDTO("24", "Masculino", "178", "Fran", "Test123");
-        sController.registrarSocio(socioRegisterDTO);
 
+        //Registro al socio
+        SocioRegisterDTO socioRegisterDTO = new SocioRegisterDTO("24", "Masculino", "178", "Fran", "Test123");
+       sController.registrarSocio(socioRegisterDTO);
+
+        //Loggeo al socio
         SocioLoginDTO socioLoginDTO = new SocioLoginDTO("Fran", "Test123");
         Socio socioLoggeado = sController.loggearSocio(socioLoginDTO);
 
-        sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date());
+        if (socioLoggeado != null) {
+            //Le hago las mediciones
+            sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date());
 
-        Medicion ultMedicion = DB.getUltimaMedicion(socioLoggeado.getNombreUsuario());
+            Medicion ultMedicion = DB.getUltimaMedicion(socioLoggeado.getNombreUsuario());
 
+            //Le setteo el objetivo
+            Objetivo obj = new TonificarCuerpo(ultMedicion.getMasaMuscular(), ultMedicion.getGrasaCorporal());
+            sController.cambiarObjetivo(obj, socioLoggeado);
 
-        Objetivo obj = new TonificarCuerpo(ultMedicion.getMasaMuscular(), ultMedicion.getGrasaCorporal());
-        sController.cambiarObjetivo(obj, socioLoggeado);
-
-
-        for (Entrenamiento entrenamiento : obj.getRutina().getEntrenamientos()) {
-            System.out.println("Entrenamiento: ");
-            for (Ejercicio ej : entrenamiento.getEjercicios()) {
-                System.out.println(ej.getURLvideo());
+            //Muestro todos los entrenamientos y ejercicios de la rutina
+            for (Entrenamiento entrenamiento : obj.getRutina().getEntrenamientos()) {
+                System.out.println("Entrenamiento: ");
+                for (Ejercicio ej : entrenamiento.getEjercicios()) {
+                    System.out.println(ej.getURLvideo() + " - Nivel Aerobico: " + ej.getNivelAerobico() + " , Ejercitacion muscular: " + ej.getExigenciaMuscular());
+                }
             }
         }
+
     }
 
     @org.junit.jupiter.api.Test
@@ -224,9 +232,9 @@ class Test {
 
         while (obj.getPesoIdeal() < socioLoggeado.getPeso()) {
             sController.realizarMediciones(socioLoggeado.getNombreUsuario(), new Date());
-        System.out.println("Peso Actual: " + socioLoggeado.getPeso());
+            System.out.println("Peso Actual: " + socioLoggeado.getPeso());
         }
-        
+
     }
 
     @org.junit.jupiter.api.Test
@@ -281,7 +289,8 @@ class Test {
         System.out.println("Entrenamiento: " + primerEntrenamiento.getEstadoEntrenamiento());
 
         Ejercicio primerEjercicio = primerEntrenamiento.getEjercicios().getFirst();
-        Refuerzo ejercicioReforzado = new Refuerzo(primerEjercicio, 20, 15, 100);
+        System.out.println("Ejercicio Inicial: Series: " +primerEjercicio.getSeries()+ ", Reps: " +primerEjercicio.getRepeticiones() + ", Peso: " + primerEjercicio.getPesoAsignado());
+        Refuerzo ejercicioReforzado = new Refuerzo(20, 15, 100, primerEjercicio.getMusculo(), primerEjercicio.getNivelAerobico(), primerEjercicio.getExigenciaMuscular(), primerEjercicio.getURLvideo());
         System.out.println("Ejercicio Reforzado: Series: " + ejercicioReforzado.getSeries() + ", Repeticiones: " + ejercicioReforzado.getRepeticiones() + ", Peso: " + ejercicioReforzado.getPeso() );
     }
 
