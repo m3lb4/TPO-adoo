@@ -42,7 +42,6 @@ public class TrofeoCreido extends Trofeo{
         }
 
 
-
     }
 
 

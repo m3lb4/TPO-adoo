@@ -56,7 +56,6 @@ public class EjercitacionController {
 
     public void agregarEjercicio(EjercicioDTO ejercicio){
         Ejercicio _ejercicio = ejercicio.toModel();
-
         DB.ejercicios.add(_ejercicio);
     }
 
@@ -69,5 +68,6 @@ public class EjercitacionController {
         }
     }
 
+    public void eliminarEjercicio(){}
 
 }

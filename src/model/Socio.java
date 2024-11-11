@@ -133,4 +133,12 @@ public class Socio {
             return false;
         }
     }
+
+    public void loggear(){
+
+    }
+
+    public void registrar(){
+
+    }
 }
